@@ -1,40 +1,37 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-  document.getElementsByName("contact").addEventListener("submit", function(e) {
-      e.preventDefault() // Cancel the default action
-      sendContactForm();
-  });
-});
 function formvalidate(){
 const fields = ["fname", "lname","email","query","message","checkbox"];
   document.querySelectorAll('.error').forEach(e => e.textContent = '');
+  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
-var t=1;
+var valid=true;
 fields.forEach(function (item, index){
     if(item=="query"){
-      if(document.getElementsByName('rad').checked){
+      if(document.getElementById('q1').checked || document.getElementById('q2').checked){
         ;
       }else{
         document.getElementById("error"+item).textContent = "Please select a query type";
+        valid=false;
       }
     }
     else if(item=="email"){
       if(document.forms["contact"][item].value==''){
         document.getElementById("error"+item).textContent = "This field is required";
+        valid=false;
       }
-      // if(re.test(email)){
-      //   ;
-      // }else{
-      //   document.getElementById("error"+item).textContent = "Please enter a valid email address";
-      // }
+      else if (emailPattern.test(document.forms["contact"][item].value)){
+        ;
+      }else{
+        document.getElementById("error"+item).textContent = "Please enter a valid email address";
+      }
     
     }
     else if(item=="checkbox"){
-      if(document.getElementsByName(item).checked){
+      if(document.getElementById(item).checked){
         ;
       }
       else{
         document.getElementById("error"+item).textContent = "To submit this form, please consent to being contacted";
-
+        valid=false;
       }
     }
     else {
@@ -42,10 +39,28 @@ fields.forEach(function (item, index){
          t= document.forms["contact"][item].value;
          if(t==''){
           document.getElementById("error"+item).textContent = "This field is required";
+          valid=false;
          }
       }
     
     });
+    if (valid){
+      // function showMessage() {
+      //   document.getElementById("customAlert").style.display = "flex";
+      // }
+      const messageDiv = document.getElementById('successMessage');
+      messageDiv.style.display = 'block'; // Show the message
+
+      // Optionally, hide the message after 3 seconds
+      setTimeout(() => {
+        messageDiv.style.display = 'none';
+      }, 3000);
+    }
+    
+  
+      // showMessage();
+    }
+  
     // alert("Hello");  
     // else{
     //     let x = document.forms["myForm"][field].value;
@@ -56,7 +71,7 @@ fields.forEach(function (item, index){
     //     }
     
 
-}
+
 // function changecolor(element) {
 //   // Get the container div
 //   element.parentNode.classList.add('active');
