@@ -164,6 +164,11 @@
 
     .attribution { font-size: 11px; text-align: center; position: absolute; }
     .attribution a { color: hsl(228, 45%, 44%); }
+    @media only screen and (max-width: 480px) {
+      .query {
+        flex: 1 1 100%; /* Make boxes stack vertically on small screens */
+      }
+    }
   </style>
 </head>
 <body>
