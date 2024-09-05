@@ -98,6 +98,10 @@ function changecolor(selectedDivId) {
     selectedContainer.classList.add('active');
   }
 }
+function removeNumbers(input) {
+  // Replace any digit with an empty string
+  input.value = input.value.replace(/[0-9]/g, '');
+}
 
 
 // function validateForm() {
