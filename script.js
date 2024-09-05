@@ -16,12 +16,14 @@ fields.forEach(function (item, index){
     else if(item=="email"){
       if(document.forms["contact"][item].value==''){
         document.getElementById("error"+item).textContent = "This field is required";
+        document.getElementById(item).style.border="1px solid red";
         valid=false;
       }
       else if (emailPattern.test(document.forms["contact"][item].value)){
         ;
       }else{
         document.getElementById("error"+item).textContent = "Please enter a valid email address";
+        document.getElementById(item).style.border="1px solid red";
       }
     
     }
@@ -36,9 +38,10 @@ fields.forEach(function (item, index){
     }
     else {
       console.log(item);
-         t= document.forms["contact"][item].value;
-         if(t==''){
-          document.getElementById("error"+item).textContent = "This field is required";
+      t= document.forms["contact"][item].value;
+      if(t==''){
+        document.getElementById("error"+item).textContent = "This field is required";
+        document.getElementById(item).style.border="1px solid red";
           valid=false;
          }
       }
