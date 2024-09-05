@@ -24,6 +24,7 @@ fields.forEach(function (item, index){
       }else{
         document.getElementById("error"+item).textContent = "Please enter a valid email address";
         document.getElementById(item).style.border="1px solid red";
+        valid=false;
       }
     
     }
