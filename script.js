@@ -20,7 +20,7 @@ fields.forEach(function (item, index){
         valid=false;
       }
       else if (emailPattern.test(document.forms["contact"][item].value)){
-        ;
+        document.getElementById(item).style.border="1px solid black";
       }else{
         document.getElementById("error"+item).textContent = "Please enter a valid email address";
         document.getElementById(item).style.border="1px solid red";
@@ -38,6 +38,7 @@ fields.forEach(function (item, index){
     }
     else {
       console.log(item);
+      document.getElementById(item).style.border="1px solid black";
       t= document.forms["contact"][item].value;
       if(t==''){
         document.getElementById("error"+item).textContent = "This field is required";
