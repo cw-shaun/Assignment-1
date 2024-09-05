@@ -65,41 +65,21 @@ fields.forEach(function (item, index){
       // showMessage();
     }
   
-    // alert("Hello");  
-    // else{
-    //     let x = document.forms["myForm"][field].value;
-    //       if (x == "") {
-            
-    //       }
-          
-    //     }
-    
 
-
-// function changecolor(element) {
-//   // Get the container div
-//   element.parentNode.classList.add('active');
-//   console.log(element.parentNode);
-//   element.parentNode.toggle('active')
-// }
 
 function changecolor(selectedDivId) {
-  // Get all radio container divs
   var containers = document.querySelectorAll('.query');
 
-  // Remove 'active' class from all containers
   containers.forEach(function(container) {
     container.classList.remove('active');
   });
 
-  // Add 'active' class to the selected container
   var selectedContainer = document.getElementById(selectedDivId);
   if (selectedContainer) {
     selectedContainer.classList.add('active');
   }
 }
 function removeNumbers(input) {
-  // Replace any digit with an empty string
   input.value = input.value.replace(/[0-9]/g, '');
 }
 
