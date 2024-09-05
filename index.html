@@ -24,6 +24,7 @@
     .form-container {
       width: 35%;
       max-width: 600px; /* Optional: Limit the maximum width */
+      min-width: none;
       padding: 20px;
       border: 1px solid #ccc;
       border-radius: 8px;
@@ -66,6 +67,8 @@
       padding-right: 10px;
     }
     #querybox{
+      display: flex; 
+      justify-content: space-between;
       margin-bottom: 0px;
     }
     #errorquery{
@@ -148,6 +151,9 @@
       font-size: 18px;
       min-width: 300px;
     } */
+     #namebox{
+      display: flex; justify-content: space-between;
+     }
     .success-message {
       display: none; /* Hidden by default */
       background-color:  hsl(169, 82%, 27%);
@@ -168,6 +174,12 @@
       .query {
         flex: 1 1 100%; /* Make boxes stack vertically on small screens */
       }
+      #querybox{
+        flex-direction: column;
+      }
+      #namebox{
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -178,7 +190,7 @@
   </div>
   <div class="form-container">
     <form name="contact">
-      <div style="display: flex; justify-content: space-between;" class="form-group">
+      <div id="namebox" class="form-group">
         <div class="doubley">
             <label class="required" for="name">First Name:</label>
             <input type="text" id="fname">
@@ -199,7 +211,7 @@
       <div class="form-group">
       <label style="margin-bottom: -5px;" class="required" for="query">Query Type:</label>
     </div>
-      <div id="querybox" style="display: flex; justify-content: space-between;" class="form-group">
+      <div id="querybox" class="form-group">
           <div id="query" class="query">
             <input type="radio" name="rad" id="q1" onclick="changecolor('query')">
             <label style="float:right;" for="name">General Enquiry:</label>
