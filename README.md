@@ -46,6 +46,7 @@ CREATE TABLE `Orders`(
     `order-id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `customer-id` INT,
     `amount` INT NOT NULL,
+    `order-date` DATE,
     FOREIGN KEY (`customer-id`) REFERENCES `Customers`(`customer-id`) ON DELETE CASCADE
 );
 ```
@@ -96,12 +97,13 @@ INSERT INTO `Products` (`name`, `price`) VALUES
 
 ### Insert Dummy Orders into Orders Table
 ```sql
-INSERT INTO `Orders` (`customer-id`, `amount`) VALUES
-(1, 1300),  -- John Doe orders Laptop + Headphones
-(2, 800),   -- Jane Smith orders Smartphone
-(3, 20),    -- Mike Johnson orders Book
-(4, 100),   -- Emily Davis orders Desk Chair
-(5, 950);   -- Sarah Williams orders Smartphone + Headphones
+INSERT INTO `Orders` (`customer-id`, `amount`, `order-date`) VALUES
+(1, 1300, '2024-09-01'),  -- John Doe orders Laptop + Headphones
+(2, 800, '2024-09-02'),   -- Jane Smith orders Smartphone
+(3, 20, '2024-09-03'),    -- Mike Johnson orders Book
+(4, 100, '2024-09-03'),   -- Emily Davis orders Desk Chair
+(5, 950, '2024-09-04');   -- Sarah Williams orders Smartphone + Headphones
+Insert Dummy Data into Cart Table
 ```
 
 ### Insert Dummy Data into Cart Table (Relating Orders to Products)
@@ -197,7 +199,15 @@ JOIN
 JOIN 
     `Products` p ON cart.`product-id` = p.`product-id`;
 ```
-
+### Get Revenue within a time period
+```sql
+SELECT 
+    SUM(o.`amount`) AS `Total Revenue`
+FROM 
+    `Orders` o
+WHERE 
+    o.`order-date` BETWEEN '2024-09-01' AND '2024-09-03';
+```
 ### Total No of products sold by product name
 ```sql
 SELECT 
