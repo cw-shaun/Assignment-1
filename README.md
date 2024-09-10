@@ -1,6 +1,8 @@
 
 # E-Commerce Database Schema
 
+![alt text](draw-image-export-2024-09-10.png)
+
 ### Database Schema
 
 1. **Customers**: Stores customer information.
